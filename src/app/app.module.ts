@@ -1,5 +1,4 @@
-import { FotosModule } from './fotos/foto/foto.module';
-import { FotoComponent } from './fotos/foto/foto.component';
+import { FotosModule } from './fotos/foto.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -11,9 +10,9 @@ import { AppComponent } from './app.component';
    ],
   imports: [
     BrowserModule,
-    FotosModule
+    FotosModule,
   ],
-  providers: [],
+  providers: [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
