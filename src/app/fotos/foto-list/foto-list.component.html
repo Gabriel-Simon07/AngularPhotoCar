@@ -1,6 +1,14 @@
-<ol class="list-unstyled row">
-    <li *ngFor="let foto of fotos" class="col-4">
-      <ap-foto [url]="foto.url" [descricao]="foto.descricao"></ap-foto>
-    </li>
-</ol>
+<div class="text-center mt-3 mb-3">
+  <form>
+      <input
+          class="rounded"
+          type="search"
+          placeholder="search..."
+          autofocus
+          (keyup)="debounce.next($event.target.value)">
+  </form>
+</div>
 
+<ap-fotos [fotos]="fotos | filtroPorDescricao: filter"></ap-fotos>
+
+<ap-load-button (click)="load()" [temMais] ="temMais"></ap-load-button>
