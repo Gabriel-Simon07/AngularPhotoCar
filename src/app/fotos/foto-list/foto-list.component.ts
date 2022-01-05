@@ -1,21 +1,18 @@
-import { FotoService } from './../foto/foto.service';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Subject } from 'rxjs';
-import { debounceTime } from 'rxjs/operators';
 
 import { Foto } from './../foto/foto';
-
+import { FotoService } from './../foto/foto.service';
 @Component({
   selector: 'app-foto-list',
   templateUrl: './foto-list.component.html',
   styleUrls: ['./foto-list.component.css']
 })
-export class FotoListComponent implements OnInit, OnDestroy {
+export class FotoListComponent implements OnInit {
 
   fotos: Foto[] = []
   filter: string = '';
-  debounce: Subject<string> = new Subject<string>();
+
   temMais: boolean = true;
   valorPagina: number = 1;
   userName: string = '';
@@ -25,16 +22,13 @@ export class FotoListComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.userName = this.activatedRoute.snapshot.params.userName;
     this.fotos = this.activatedRoute.snapshot.data['fotos'];
-    this.debounce.pipe(debounceTime(300)).subscribe(filter => this.filter = filter);
-  }
-
-  ngOnDestroy(): void {
-    this.debounce.unsubscribe();
   }
 
   load() {
     this.fotoService.listFromUserPaginated(this.userName, ++this.valorPagina)
-    .subscribe(fotos => {this.fotos = this.fotos.concat(fotos);
+    .subscribe(fotos => {
+      this.filter = '';
+      this.fotos = this.fotos.concat(fotos);
     if(!this.fotos.length) this.temMais = false;});
   }
 }

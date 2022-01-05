@@ -1,13 +1,6 @@
-<div class="text-center mt-3 mb-3">
-  <form>
-      <input
-          class="rounded"
-          type="search"
-          placeholder="search..."
-          autofocus
-          (keyup)="debounce.next($event.target.value)">
-  </form>
-</div>
+<h1 class="text-center" style="background: red" apDarkenOnHover>Fotos</h1>
+
+<ap-search (onTyping)="filter = $event" [value]="filter"></ap-search>
 
 <ap-fotos [fotos]="fotos | filtroPorDescricao: filter"></ap-fotos>
 

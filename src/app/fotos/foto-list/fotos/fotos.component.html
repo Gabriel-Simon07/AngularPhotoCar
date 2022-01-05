@@ -2,9 +2,15 @@
   Desculpa, sem fotos com essa descrição
 </p>
 <ol class="list-unstyled">
-  <li *ngFor="let cols of rows" class="row">
-    <div *ngFor="let foto of cols" class="col-4">
-      <ap-foto [url]="foto.url" [descricao]="foto.descricao"></ap-foto>
+  <li *ngFor="let cols of rows" class="row no-gutters">
+    <div *ngFor="let foto of cols" class="col-4" apDarkenOnHover>
+      <ap-card [title]="foto.descricao">
+        <ap-foto [url]="foto.url" [descricao]="foto.descricao"></ap-foto>
+        <div class="text-center p-1">
+          <i aria-hidden="true" class="fa fa-heart-o fa-1x mr-2"></i>{{ foto.likes }}
+          <i aria-hidden="true" class="fa fa-comment-o fa-1x mr-2 ml-2"></i>{{ foto.comments }}
+        </div>
+      </ap-card>
     </div>
   </li>
 </ol>
