@@ -1,3 +1,4 @@
+import { CoreModule } from './core/core.module';
 import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
 import { NotFoundComponent } from './errors/not-found/not-found.component';
@@ -19,6 +20,7 @@ import { ErrorsModule } from './errors/errors.module';
     AppRoutingModule,
     ErrorsModule,
     HomeModule,
+    CoreModule,
   ],
   providers: [  ],
   bootstrap: [AppComponent]
