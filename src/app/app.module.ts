@@ -1,7 +1,5 @@
 import { CoreModule } from './core/core.module';
-import { CommonModule } from '@angular/common';
 import { HomeModule } from './home/home.module';
-import { NotFoundComponent } from './errors/not-found/not-found.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
